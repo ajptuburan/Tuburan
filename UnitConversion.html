@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit Converter</title>
+    <link rel="stylesheet" type="text/css" href="UnitConversion.css">
+</head>
+<body>
+    <header>
+        <div class="main">
+            <div class="logo">  
+            </div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li class="active"><a href="UnitConversion.html">UnitConversion</a></li>
+                <li><a href="TaxIncome.html">TaxIncome</a></li>
+                <li><a href="nth factorial, sum, average.html">Factorial</a></li>
+                <li><a href="Payroll.html">Payroll</a></li>
+                <li><a href="Personal HTML.html">AboutMe</a></li>
+                <li><a href="ContactMe.html">ContactMe</a></li>
+            </ul>
+        </div>  
+    </header>
+
+    <div class="conversion-box" id="fahrenheitToCelsius">
+        <h2>Fahrenheit to Celsius</h2>
+        <label for="inputValueFahrenheit">Enter Value (Fahrenheit):</label>
+        <input type="number" id="inputValueFahrenheit">
+        <button onclick="convert('fahrenheitToCelsius')">Convert</button>
+        <p id="resultFahrenheitToCelsius"></p>
+    </div>
+
+    <div class="conversion-box" id="celsiusToFahrenheit">
+        <h2>Celsius to Fahrenheit</h2>
+        <label for="inputValueCelsius">Enter Value (Celsius):</label>
+        <input type="number" id="inputValueCelsius">
+        <button onclick="convert('celsiusToFahrenheit')">Convert</button>
+        <p id="resultCelsiusToFahrenheit"></p>
+    </div>
+
+    <div class="conversion-box" id="metersToFeet">
+        <h2>Meters to Feet</h2>
+        <label for="inputValueMeters">Enter Value (Meters):</label>
+        <input type="number" id="inputValueMeters">
+        <button onclick="convert('metersToFeet')">Convert</button>
+        <p id="resultMetersToFeet"></p>
+    </div>
+
+    <div class="conversion-box" id="feetToMeters">
+        <h2>Feet to Meters</h2>
+        <label for="inputValueFeet">Enter Value (Feet):</label>
+        <input type="number" id="inputValueFeet">
+        <button onclick="convert('feetToMeters')">Convert</button>
+        <p id="resultFeetToMeters"></p>
+    </div>
+
+    <script>
+            function convert(conversionType) {
+            const inputValue = parseFloat(document.getElementById(`inputValue${conversionType}`).value);
+            let result;
+
+            switch (conversionType) {
+                case "fahrenheitToCelsius":
+                    result = (inputValue - 32) * (5 / 9);
+                    document.getElementById("resultFahrenheitToCelsius").innerHTML = `Result: ${result.toFixed(2)}`;
+                    break;
+                case "celsiusToFahrenheit":
+                    result = (inputValue * (9 / 5)) + 32;
+                    document.getElementById("resultCelsiusToFahrenheit").innerHTML = `Result: ${result.toFixed(2)}`;
+                    break;
+                case "metersToFeet":
+                    result = inputValue * 3.28084;
+                    document.getElementById("resultMetersToFeet").innerHTML = `Result: ${result.toFixed(2)}`;
+                    break;
+                case "feetToMeters":
+                    result = inputValue / 3.28084;
+                    document.getElementById("resultFeetToMeters").innerHTML = `Result: ${result.toFixed(2)}`;
+                    break;
+                default:
+                    console.log("Invalid conversion type");
+            }
+        }
+    </script>
+</body>
+</html>
