@@ -23,64 +23,52 @@
         </div>  
     </header>
 
-    <div class="conversion-box" id="fahrenheitToCelsius">
-        <h2>Fahrenheit to Celsius</h2>
-        <label for="inputValueFahrenheit">Enter Value (Fahrenheit):</label>
-        <input type="number" id="inputValueFahrenheit">
-        <button onclick="convert('fahrenheitToCelsius')">Convert</button>
-        <p id="resultFahrenheitToCelsius"></p>
-    </div>
+    <div class="conversion-box">
+        <h2>Unit Converter</h2>
 
-    <div class="conversion-box" id="celsiusToFahrenheit">
-        <h2>Celsius to Fahrenheit</h2>
-        <label for="inputValueCelsius">Enter Value (Celsius):</label>
-        <input type="number" id="inputValueCelsius">
-        <button onclick="convert('celsiusToFahrenheit')">Convert</button>
-        <p id="resultCelsiusToFahrenheit"></p>
-    </div>
+        <label for="inputValue">Enter Value:</label>
+        <input type="number" id="inputValue">
 
-    <div class="conversion-box" id="metersToFeet">
-        <h2>Meters to Feet</h2>
-        <label for="inputValueMeters">Enter Value (Meters):</label>
-        <input type="number" id="inputValueMeters">
-        <button onclick="convert('metersToFeet')">Convert</button>
-        <p id="resultMetersToFeet"></p>
-    </div>
+        <label for="conversionType">Select Conversion Type:</label>
+        <select id="conversionType">
+            <option value="fahrenheitToCelsius">Fahrenheit to Celsius</option>
+            <option value="celsiusToFahrenheit">Celsius to Fahrenheit</option>
+            <option value="metersToFeet">Meters to Feet</option>
+            <option value="feetToMeters">Feet to Meters</option>
+        </select>
 
-    <div class="conversion-box" id="feetToMeters">
-        <h2>Feet to Meters</h2>
-        <label for="inputValueFeet">Enter Value (Feet):</label>
-        <input type="number" id="inputValueFeet">
-        <button onclick="convert('feetToMeters')">Convert</button>
-        <p id="resultFeetToMeters"></p>
+        <button onclick="convert()">Convert</button>
+
+        <p id="result"></p>
     </div>
 
     <script>
-            function convert(conversionType) {
-            const inputValue = parseFloat(document.getElementById(`inputValue${conversionType}`).value);
+        function convert() {
+            const inputValue = parseFloat(document.getElementById("inputValue").value);
+            const conversionType = document.getElementById("conversionType").value;
             let result;
 
             switch (conversionType) {
                 case "fahrenheitToCelsius":
                     result = (inputValue - 32) * (5 / 9);
-                    document.getElementById("resultFahrenheitToCelsius").innerHTML = `Result: ${result.toFixed(2)}`;
                     break;
                 case "celsiusToFahrenheit":
                     result = (inputValue * (9 / 5)) + 32;
-                    document.getElementById("resultCelsiusToFahrenheit").innerHTML = `Result: ${result.toFixed(2)}`;
                     break;
                 case "metersToFeet":
                     result = inputValue * 3.28084;
-                    document.getElementById("resultMetersToFeet").innerHTML = `Result: ${result.toFixed(2)}`;
                     break;
                 case "feetToMeters":
                     result = inputValue / 3.28084;
-                    document.getElementById("resultFeetToMeters").innerHTML = `Result: ${result.toFixed(2)}`;
                     break;
                 default:
                     console.log("Invalid conversion type");
+                    return;
             }
+
+            document.getElementById("result").innerHTML = `Result: ${result.toFixed(2)}`;
         }
     </script>
+    
 </body>
 </html>
