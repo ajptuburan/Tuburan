@@ -2,22 +2,24 @@ body {
     font-family: 'Arial', sans-serif;
     background-color: #ddd9d9;
     margin: 0;
+    background-image: url("AJT_0831.jpg");
 }
 .container {
     text-align: center;
     padding: 50px;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
+    background-color: #810000;
     margin: 150px;
 }
 
 h2 {
-    color: #3498db;
+    color: #ffffff;
 }
 
 label {
     margin-right: 10px;
+    color: #fff;
 }
 
 input {
@@ -29,7 +31,7 @@ input {
 
 button {
     padding: 10px;
-    background-color: #3498db;
+    background-color: #003c64;
     color: #fff;
     border: none;
     cursor: pointer;
@@ -37,15 +39,16 @@ button {
 }
 
 button:hover {
-    background-color: #2980b9;
+    background-color: #002a46;
 }
 
 #output {
     margin-top: 20px;
     padding: 15px;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(253, 253, 253, 0.1);
     text-align: left;
+    color: #fff ;
 }
 
 p {
@@ -53,8 +56,10 @@ p {
 }
 
 ul {
+    float: right;
     list-style-type: none;
     margin-top: 30px;
+    margin-right: 430px;
 }
 
 ul li {
