@@ -64,7 +64,6 @@
     </table>
 </div>
 
-<!-- Income Tax Calculator -->
 <div style="width: 80%; margin: 20px 0; box-sizing: border-box;">
     <h2>Income Tax Calculator</h2>
 
@@ -79,11 +78,23 @@
 <script>
     function calculateTax() {
         const taxableIncome = parseFloat(document.getElementById("taxableIncome").value);
-        let incomeTax = 0;
+        let tax = 0;
 
-        // Calculation logic goes here
+        if (taxableIncome <= 250000) {
+            tax = 0;
+        } else if (taxableIncome <= 400000) {
+            tax = 0.2 * (taxableIncome - 250000);
+        } else if (taxableIncome <= 800000) {
+            tax = 14000 + 0.25 * (taxableIncome - 400000);
+        } else if (taxableIncome <= 2000000) {
+            tax = 60000 + 0.3 * (taxableIncome - 800000);
+        } else if (taxableIncome <= 8000000) {
+            tax = 169000 + 0.32 * (taxableIncome - 2000000);
+        } else {
+            tax = 618000 + 0.35 * (taxableIncome - 8000000);
+        }
 
-        document.getElementById("result").innerHTML = `Income Tax: ${incomeTax.toFixed(2)}`;
+        document.getElementById("result").innerHTML = `Income Tax: ${tax.toFixed(2)}`;
     }
 </script>
 
