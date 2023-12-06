@@ -41,6 +41,8 @@
   </form>
 
   <table id="payrollTable">
+    <br>
+    <button onclick="openClearModal()">Clear Table</button>
     <tr>
       <th>No.</th>
       <th>Employee Name</th>
@@ -52,9 +54,28 @@
       <th>Action</th>
     </tr>
   </table>
+  
+  <div class="modal" id="clearModal">
+    <div class="modal-content">
+      <span class="close" onclick="closeClearModal()">&times;</span>
+      <p>Are you sure you want to clear the table?</p>
+      <button onclick="clearTable()">Yes</button>
+      <button onclick="closeClearModal()">No</button>
+    </div>
+  </div>
+
+  <div class="modal" id="deleteModal">
+    <div class="modal-content">
+      <span class="close" onclick="closeDeleteModal()">&times;</span>
+      <p>Are you sure you want to delete this employee?</p>
+      <button onclick="confirmDeleteEmployee()">Yes</button>
+      <button onclick="closeDeleteModal()">No</button>
+    </div>
+  </div>
 
   <script>
     let payrollList = [];
+    let deleteIndex;
 
     function calculatePay(daysWorked, dailyRate, deductionAmount) {
       const grossPay = daysWorked * dailyRate;
@@ -108,8 +129,36 @@
     }
 
     function deleteEmployee(index) {
-      payrollList.splice(index, 1);
+      deleteIndex = index;
+      openDeleteModal();
+    }
+
+    function openClearModal() {
+      document.getElementById('clearModal').style.display = 'flex';
+    }
+
+    function closeClearModal() {
+      document.getElementById('clearModal').style.display = 'none';
+    }
+
+    function openDeleteModal() {
+      document.getElementById('deleteModal').style.display = 'flex';
+    }
+
+    function closeDeleteModal() {
+      document.getElementById('deleteModal').style.display = 'none';
+    }
+
+    function clearTable() {
+      payrollList = [];
       displayPayrollTable();
+      closeClearModal();
+    }
+
+    function confirmDeleteEmployee() {
+      payrollList.splice(deleteIndex, 1);
+      displayPayrollTable();
+      closeDeleteModal();
     }
   </script>
 
